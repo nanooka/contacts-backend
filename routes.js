@@ -3,23 +3,18 @@ const contactModel = require("./models");
 const app = express();
 const cors = require("cors");
 
-app.use(cors());
-
-// npm in cors
-const cors = require("cors");
-app.use(cors());
-
 const corsOptions = {
-  // origin: "http://localhost:3001",
+  // origin: "http://localhost:3000",
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
+  // credentials: true,
 };
 
 app.use(cors(corsOptions));
 
 app.post("/add_contact", async (request, response) => {
   const contact = new contactModel(request.body);
+  console.log("es aris shemomavali kontaqti ", request.body);
   try {
     await contact.save();
     response.send(contact);
