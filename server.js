@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/contacts", {
+mongoose.connect("mongodb://0.0.0.0:27017/contacts", {
   useNewUrlParser: true,
   //   useFindAndModify: false,
   useUnifiedTopology: true,
@@ -19,6 +19,8 @@ db.once("open", function () {
 });
 app.use(Router);
 
-app.listen(3001, () => {
-  console.log("Server is running at port 3001");
+let port = 3005;
+
+app.listen(port, () => {
+  console.log(`Server is running at port ${port}`);
 });

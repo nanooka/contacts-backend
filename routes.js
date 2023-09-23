@@ -1,7 +1,9 @@
 const express = require("express");
-// import express from "express";
 const contactModel = require("./models");
 const app = express();
+const cors = require("cors");
+
+app.use(cors());
 
 app.post("/add_contact", async (request, response) => {
   const contact = new contactModel(request.body);
@@ -17,7 +19,8 @@ app.get("/contacts", async (request, response) => {
   const contacts = await contactModel.find({});
 
   try {
-    response.send(contacts);
+    response.status(200).send(contacts);
+    response.end();
   } catch (error) {
     response.status(500).send(error);
   }
