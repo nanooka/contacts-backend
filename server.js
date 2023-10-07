@@ -5,6 +5,8 @@ const Router = require("./routes");
 const app = express();
 
 app.use(express.json());
+//
+app.use("/uploads", express.static("uploads"));
 
 mongoose.connect("mongodb://0.0.0.0:27017/contacts", {
   useNewUrlParser: true,
